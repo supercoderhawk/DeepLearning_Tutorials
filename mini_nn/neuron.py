@@ -1,9 +1,23 @@
 # -*- coding: UTF-8 -*-
+"""神经元模块"""
 import math
 
 
-class Neuron:
+class Neuron(object):
+  """神经元类
+
+  执行计算加权和与激活函数值
+
+  """
   def __init__(self, weights, bias, activation='sigmoid'):
+    """创建神经元
+
+    :param weights: 权重参数，[m]，其中m代表前一层网络神经元个数，也是输入数据的维度
+    :param bias: 偏移参数，浮点数
+    :param activation: 激活函数名
+    :raises
+      Exception: 激活函数不是`sigmoid`、`tanh`或者`linear`引发异常
+    """
     if activation == 'sigmoid':
       self.activation = Neuron.sigmoid
       self.diff_activation = Neuron.diff_sigmoid
@@ -21,12 +35,24 @@ class Neuron:
     self.input_nums = len(weights)
 
   def calculate_weighted_sum(self, input):
+    """计算输入的加权和
+
+    :param input: 输入参数，[m]
+    :return: 加权和，浮点数
+    :raises: Exception: 输入数据维度不正确
+    """
     if len(input) != self.input_nums:
       raise Exception('input size error, expect {0}, input {1}'.format(self.input_nums, len(input)))
 
     return sum([a * b for a, b in zip(self.weights, input)]) + self.bias
 
   def calculate_output(self, weighted_sum):
+    """给定加权和计算激活函数输出
+
+    :param weighted_sum: 加权和
+    :return: 激活函数输出，浮点数
+    :raises: Exception: 输入的加权和不是浮点数
+    """
     if not isinstance(weighted_sum, float):
       raise Exception('weighted sum must be float')
 

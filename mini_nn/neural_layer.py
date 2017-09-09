@@ -1,9 +1,21 @@
 # -*- coding: UTF-8 -*-
+"""神经网络层模块"""
 from mini_nn.neuron import Neuron
 
 
-class NeuralLayer:
+class NeuralLayer(object):
+  """神经网络层类
+
+  计算网络层的前向输出和梯度
+
+  """
   def __init__(self, weights, biases, activation='sigmoid'):
+    """创建一个神经网络层
+
+    :param weights: 权重，[m, n]，其中m为前一层神经元数，n为后一层神经元数
+    :param biases: 偏移，[n]
+    :param activation: 激活函数名，默认为'sigmoid'
+    """
     if len(weights[0]) != len(biases):
       raise Exception('weights and biases length is not equal')
 
@@ -23,6 +35,11 @@ class NeuralLayer:
     self.diff_weighted_sum = None
 
   def feed_forward(self, input):
+    """前向计算，即给定输入值，计算网络输出值
+
+    :param input: 当前层输入，[m]
+    :return: 当前层输出, [n]
+    """
     self.input = input
     self.weighted_sums = [0] * self.neurons_num
     self.output = [0] * self.neurons_num
@@ -33,6 +50,11 @@ class NeuralLayer:
     return self.output
 
   def diff_layer(self, back_propagation):
+    """计算当前层权重和偏移的梯度值
+
+    :param back_propagation: 后面层的梯度
+    :return: 当前层权重和偏移对损失函数的梯度值组成的元组
+    """
     if len(back_propagation) != self.neurons_num:
       raise Exception('back propagation dimension error')
     if not self.weighted_sums:
@@ -45,6 +67,13 @@ class NeuralLayer:
     return diff_weights, diff_bias
 
   def update_layer(self, weights, biases, lr):
+    """更新层权重和偏移
+
+    :param weights: 变化的权重
+    :param biases: 变化的偏移
+    :param lr: 学习率
+    :return: 无返回
+    """
     for j in range(self.neurons_num):
       for i in range(self.prev_neurons_num):
         self.weights[i][j] -= lr * weights[i][j]
