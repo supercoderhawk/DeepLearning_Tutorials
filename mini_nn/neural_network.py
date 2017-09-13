@@ -83,7 +83,7 @@ class NeuralNetwork(object):
     elif not interval and (not isinstance(interval, int) or not interval <= 0):
       raise Exception('interval is not positive integer')
 
-    for i in range(epoch):
+    for i in range(1, epoch + 1):
       for input, output in zip(training_data_input, training_data_output):
         diff_weights = []
         diff_biases = []
