@@ -8,11 +8,11 @@
 
 不依赖任何第三方库实现的最简单的多层感知机神经网络。
 
-说明：[min_nn](https://github.com/supercoderhawk/DeepLearning_Tutorials/blob/master/mini_nn/mini_nn.ipynb)
+说明：[mini_nn.ipynb（例子和说明）](https://github.com/supercoderhawk/DeepLearning_Tutorials/blob/master/mini_nn/mini_nn.ipynb)
 
 ### mini_nn_numpy
 
-仅依赖`numpy`实现的简单多层感知机。
+仅依赖`numpy`实现的简单多层感知机，代码比`mini_nn`简单很多。
 
 ### tensorflow
 
