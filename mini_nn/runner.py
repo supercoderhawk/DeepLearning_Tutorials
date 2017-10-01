@@ -9,9 +9,9 @@ def runner():
   :return: 无返回值
   """
   training_data_input = [[0, 0], [0, 1], [1, 0], [1, 1]]
-  training_data_output = [[0], [1], [1], [0]]
+  training_data_output = [[0], [1], [1], [1]]
   nn = NeuralNetwork([2, 2, 1], 0.5)
-  nn.fit(training_data_input, training_data_output, epoch=100000, interval=1000)
+  nn.fit(training_data_input, training_data_output, epoch=100000, interval=10000)
   print(nn.predict(training_data_input))
 
 

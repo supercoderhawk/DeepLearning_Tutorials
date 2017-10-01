@@ -50,12 +50,12 @@ class NeuralNetwork(object):
       biases=self.__get_randoms(layers_count[-1]),
       activation='linear'))
 
-  def fit(self, training_data_input, training_data_output, *, epoch=100, interval=10):
+  def fit(self, training_data_input, training_data_output, *, epochs=100, interval=10):
     """使用数据训练网络
 
-    :param training_data_input: 训练数据输入部分，[x, n]_i，x代表训练数据个数，n_i代表输入维度
+    :param training_data_input: 训练数据输入部分，[x, n_i]，x代表训练数据个数，n_i代表输入维度
     :param training_data_output: 训练数据输入部分对应的输出，[x, n_o]，x代表训练数据个数，n_o代表输出维度
-    :param epoch: 迭代次数，为正整数
+    :param epochs: 迭代次数，为正整数
     :param interval: 打印次数和loss值的间隔，为正整数
     :return: 无返回值
     :raises:
@@ -78,12 +78,12 @@ class NeuralNetwork(object):
     if not check_dimension_size(training_data_output, [len(training_data_output), self.__output_nums]):
       raise Exception('training output data size error')
 
-    if not epoch and (not isinstance(epoch, int) or not epoch <= 0):
+    if not epochs and (not isinstance(epochs, int) or not epochs <= 0):
       raise Exception('epoch is not positive integer')
     elif not interval and (not isinstance(interval, int) or not interval <= 0):
       raise Exception('interval is not positive integer')
 
-    for i in range(1, epoch + 1):
+    for i in range(1, epochs + 1):
       for input, output in zip(training_data_input, training_data_output):
         diff_weights = []
         diff_biases = []
