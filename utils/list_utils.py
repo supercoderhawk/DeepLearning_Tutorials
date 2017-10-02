@@ -5,7 +5,7 @@ from itertools import starmap
 from collections import deque
 
 
-def flatten(a):
+def list_flatten(a):
   """将嵌套列表展平
 
   例：

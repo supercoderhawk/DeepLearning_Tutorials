@@ -6,14 +6,14 @@ from utils.list_utils import *
 class TestListUtils(TestCase):
   def test_flatten(self):
     a = [1, 2, 3, [4, 5]]
-    self.assertCountEqual(flatten(a), [1, 2, 3, 4, 5])
+    self.assertCountEqual(list_flatten(a), [1, 2, 3, 4, 5])
 
     b = [[1, 2, 3], [], [4, [5]]]
-    self.assertCountEqual(flatten(b), [1, 2, 3, 4, 5])
+    self.assertCountEqual(list_flatten(b), [1, 2, 3, 4, 5])
 
-    self.assertEqual(flatten([]), [])
+    self.assertEqual(list_flatten([]), [])
     try:
-      flatten(1)
+      list_flatten(1)
     except Exception as e:
       self.assertEqual(e.args[0], 'input is not a list')
 
