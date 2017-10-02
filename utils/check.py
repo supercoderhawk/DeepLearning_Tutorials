@@ -17,11 +17,15 @@ def check_dimension(a, dim, *, type=None, func=None):
   :return: 布尔值，其中，维度、类型和函数检查都通过返回True，否则返回False
   :raise
     Exception:
-      1. 类型在指定返回
-      2. 函数不是可调用的
-      3. 维度dim不是正整数
+      1. a不是列表类型
+      2. 类型不在指定范围内
+      3. 函数不是可调用的
+      4. 维度dim不是正整数
 
   """
+  if not isinstance(a, list):
+    raise Exception('input content is not list type')
+
   if not a:
     return False
 
