@@ -8,6 +8,11 @@ from collections import deque
 def flatten(a):
   """将嵌套列表展平
 
+  例：
+    [[1, 2], 3] -> [1, 2, 3]
+    [[1],[[2]]] -> [1,2]
+    1 -> 引发异常
+
   :param a: 输入的列表
   :return: 返回一维的列表
   :raise: Exception: 输入不是列表
@@ -36,6 +41,11 @@ def flatten(a):
 
 def list_reshape(a, dims):
   """将一维列表转换成指定维度
+
+  例：
+    a = [1,2,3,4], dims = [2, 2] -> [[1, 2], [3, 4]]
+    a = [1], dims = [1, 1] -> [[1]]
+    a = [1], dims = [2, 1] -> 引发异常
 
   :param a: 待转换的一维列表
   :param dims: 维度列表，正整数
@@ -108,6 +118,10 @@ def list_size(a):
 
 def list_add(a, b, *, elem=False, check=True):
   """类矩阵列表相加，类似于numpy的加运算符
+
+  例
+    a = [1, 2], b = [3, 4] -> [4, 6]
+    a = [(1, 2)], b = [1] -> 引发异常
 
   :param a: 待相加的参数
   :param b: 待相加的参数
