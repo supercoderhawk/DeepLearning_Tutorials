@@ -12,7 +12,7 @@
 
 ### mini_nn_numpy
 
-仅依赖`numpy`实现的简单多层感知机，代码比`mini_nn`简单很多。
+仅依赖`numpy`实现的简单多层感知机，功能和`mini_nn`完全相同，但代码比`mini_nn`简单很多。
 
 ### tensorflow
 
@@ -35,7 +35,7 @@
 主要是实现列表的一些矩阵操作
 
 * `list_flatten`：展平列表
-* `list_reshape`：转换列表网维度
+* `list_reshape`：转换列表的维度
 * `list_size`：获得列表维度
 * `list_add`：列表相加
 
